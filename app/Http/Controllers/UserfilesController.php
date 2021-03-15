@@ -18,7 +18,7 @@ class UserfilesController extends Controller
     public function index()
     {
         //
-       return response()->json(['Files'=>':','status'=>'ok','File'=>user_files::all()], 200);
+       return response()->json(['Files'=>':','status'=>'ok','File'=>user_files::all()->groupBy('user_id')], 200);
     
     }
 
@@ -46,7 +46,7 @@ class UserfilesController extends Controller
         $response = Response::json($file,200); 
         User_files::create([
             'url'=>$url ]);
-        return response()->json(['Files'=>':','status'=>'ok','File'=>user_files::all()], 200);
+        return response()->json(['Files'=>':','status'=>'ok','File'=>user_files::all()->groupBy('user_id')], 200);
     }
 
     /**
